@@ -1,5 +1,6 @@
 const restaurantRepository = require('../repository/restaurantRepository');
 
+//레스토랑 생성
 const createRestaurant = (req, res) => {
     const { name, category } = req.body;
 
@@ -12,7 +13,7 @@ const createRestaurant = (req, res) => {
   });
 };
 
-
+//레스토랑 조회
 const getRestaurantById = (req, res) => {
     const id = req.params.id;
 
@@ -32,7 +33,23 @@ const getRestaurantById = (req, res) => {
       });
 }
 
+//레스토랑 수정
+const updateRestaurant = (req, res) => {
+    const id = req.params.id;
+    const { category } = req.body;
+    console.log('test');
+
+    restaurantRepository.updateRestaurant(id, category)
+    .then(results => { //then으로 결과를 받아야지만 promise가 이행?
+        res.status(200).json({ message: '레스토랑 수정 성공' });
+      })
+      .catch(error => {
+        res.status(500).json({ error: '레스토랑 수정 실패' });
+      });
+}
+
 module.exports = {
   createRestaurant,
-  getRestaurantById
+  getRestaurantById,
+  updateRestaurant
 };

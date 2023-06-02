@@ -17,6 +17,7 @@ const createRestaurant = (name, category) => {
   });
 };
 
+
 const getRestaurantById = (id) => {
 
   return new Promise((resolve, reject) => {
@@ -32,7 +33,23 @@ const getRestaurantById = (id) => {
   });
 };
 
+
+const updateRestaurant = (id, category) => {
+
+  return new Promise((resolve, reject) => {
+    const query = "UPDATE restaurants SET category = ? WHERE id = ?";
+    conn.execute(query, [category, id], (error, results) => {
+      if (error) {
+        reject(error);
+      } else {
+        resolve(results);
+      }
+    });
+  });
+};
+
 module.exports = {
   createRestaurant,
-  getRestaurantById
+  getRestaurantById,
+  updateRestaurant
 };
