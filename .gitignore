@@ -1,0 +1,67 @@
+# Dependency directories
+node_modules/
+dist/
+build/
+
+# Environment configuration
+.env
+
+# IDE and editor files
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Logs and debugging files
+*.log
+logs/
+*.pid
+*.seed
+*.pid.lock
+
+# OS generated files
+.DS_Store
+Thumbs.db
+ehthumbs.db
+ehthumbs_vista.db
+
+# Compiled binary files
+*.com
+*.class
+*.dll
+*.exe
+*.o
+*.so
+
+# Cache files
+*.swp
+*.cache
+*.cson
+*.csv
+*.dat
+*.db
+*.db-journal
+*.db-shm
+*.db-wal
+*.dep
+*.dmg
+*.dockerfile
+*.dockerignore
+*.DS_Store
+*.edb
+*.lock
+*.log
+*.mdb
+*.msi
+*.npmrc
+*.pyc
+*.sqlite
+*.suo
+*.sw?
+*.tar.gz
+*.tgz
+*.yarn-integrity
+*.zip
