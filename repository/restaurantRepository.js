@@ -2,27 +2,37 @@ const conn = require('../maria');
 
 
 const createRestaurant = (name, category) => {
-  console.log('restaurant 레포지토리 실행');
 
   return new Promise((resolve, reject) => {
-    console.log('promise문');
 
     const query = "INSERT INTO restaurants (name, category) VALUES (?, ?)";
     conn.query(query, [name, category], (error, results) => {
-      console.log('query문');
 
       if (error) {
         reject(error);
       } else {
-        console.log('resolve');
-
         resolve(results);
-        console.log(results)
+      }
+    });
+  });
+};
+
+const getRestaurantById = (id) => {
+
+  return new Promise((resolve, reject) => {
+
+    const query = "SELECT * FROM restaurants WHERE id = ?";
+    conn.execute(query, [id], (error, results) => {
+      if (error) {
+        reject(error);
+      } else {
+        resolve(results);
       }
     });
   });
 };
 
 module.exports = {
-  createRestaurant
+  createRestaurant,
+  getRestaurantById
 };

@@ -20,6 +20,7 @@ app.listen(app.get('port'), hostname, () => {
 })
 
 app.post('/restaurants', restaurantRoutes);
+app.get('/restaurants/:id', restaurantRoutes);
 
 
 //테이블 생성

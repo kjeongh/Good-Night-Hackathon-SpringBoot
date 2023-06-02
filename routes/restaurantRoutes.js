@@ -16,7 +16,8 @@ const restaurantController = require('../controllers/restaurantController');
 
 const router = express.Router();
 
-// POST /restaurant
+// 레스토랑 라우터
 router.post('/restaurants', restaurantController.createRestaurant);
+router.get('/restaurants/:id', restaurantController.getRestaurantById);
 
 module.exports = router;
