@@ -50,7 +50,7 @@ const updateReview = (id, title, content) => {
 
     return new Promise((resolve, reject) => {
 
-        const query = "UPDATE restaurants SET title = ?, category = ? WHERE id = ?";
+        const query = "UPDATE reviews SET title = ?, content = ?, updated_at = NOW() WHERE id = ?";
         conn.query(query, [title, content, id], (error, results) => {
   
             if (error) {
