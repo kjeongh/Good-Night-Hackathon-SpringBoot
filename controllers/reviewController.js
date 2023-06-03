@@ -48,8 +48,23 @@ const deleteReview = (req, res) => {
 };
 
 
+//리뷰 수정
+const updateReview = (req, res) => {
+    const id = req.params.id;
+    const { title, content } = req.body;
+
+    reviewRepository.updateReview(id, title, content)
+  .then(results => { 
+    res.status(200).json({ message: '리뷰 수정 성공' });
+  })
+  .catch(error => {
+    res.status(500).json({ error: '리뷰 수정 실패' });
+  });
+};
+
 module.exports = {
     createReview,
     getReview,
-    deleteReview
+    deleteReview,
+    updateReview
   };

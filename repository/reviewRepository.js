@@ -45,10 +45,27 @@ const deleteReview = (id) => {
       });
     });
 };
+
+const updateReview = (id, title, content) => {
+
+    return new Promise((resolve, reject) => {
+
+        const query = "UPDATE restaurants SET title = ?, category = ? WHERE id = ?";
+        conn.query(query, [title, content, id], (error, results) => {
+  
+            if (error) {
+              reject(error);
+            } else {
+              resolve(results);
+            }
+          });
+    })
+} 
   
   module.exports = {
     createReview,
     getReview,
-    deleteReview
+    deleteReview,
+    updateReview
   };
   
