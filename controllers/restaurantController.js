@@ -37,7 +37,6 @@ const getRestaurantById = (req, res) => {
 const updateRestaurant = (req, res) => {
     const id = req.params.id;
     const { category } = req.body;
-    console.log('test');
 
     restaurantRepository.updateRestaurant(id, category)
     .then(results => {

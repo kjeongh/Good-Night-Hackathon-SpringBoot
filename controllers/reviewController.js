@@ -63,24 +63,18 @@ const updateReview = (req, res) => {
 };
 
 
-//리뷰 목록 조회
+//리뷰 목록 조회 (페이지네이션)
 const getReviewList = (req, res) => {
-    const category = req.query.category;
+    const page = parseInt(req.query.page); // 페이지 번호
+    const limit = parseInt(req.query.limit); // 페이지당 항목 수
 
     reviewRepository.getReviewList()
     .then(results => { 
 
-        //리뷰 목록 jsonArray생성
-        const reviewList = [];
-        results.forEach((review) => {
-            reviewList.push(
-                {
-                    //레스토랑 이름으로 변경
-                    restaurantId: review.restaurantId,
-                    name: review.title,
-                    category: review.content
-                })
-        })
+        //페이지네이션
+        const startIndex = (page-1)*limit;
+        const endIndex = page*limit;
+        const reviewList = results.slice(startIndex, endIndex);
 
         res.status(200).json(
             { 
