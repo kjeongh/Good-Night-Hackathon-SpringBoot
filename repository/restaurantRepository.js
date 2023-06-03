@@ -35,15 +35,29 @@ const getRestaurantById = (id) => {
 
 const getRestaurantList = (category) => {
   return new Promise((resolve, reject) => {
-    console.log(category);
-    const query = "SELECT * FROM restaurants WHERE category = ? AND deleted_at IS NULL";
-    conn.execute(query, [category], (error, results) => {
-      if (error) {
-        reject(error);
-      } else {
-        resolve(results);
-      }
-    });
+    if(category == 'all') { //전체 조회
+      const query = "SELECT * FROM restaurants WHERE deleted_at IS NULL";
+      conn.execute(query, (error, results) => {
+        if (error) {
+          reject(error);
+        } else {
+          resolve(results);
+        }
+      });
+    }
+    else { //카테고리별 조회
+      const query = "SELECT * FROM restaurants WHERE category = ? AND deleted_at IS NULL";
+      conn.execute(query, [category], (error, results) => {
+        if (error) {
+          reject(error);
+        } else {
+          resolve(results);
+        }
+      });
+    }
+
+
+
   });
 }
 
