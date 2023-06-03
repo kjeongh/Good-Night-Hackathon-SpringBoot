@@ -22,7 +22,7 @@ const getRestaurantById = (id) => {
 
   return new Promise((resolve, reject) => {
 
-    const query = "SELECT * FROM restaurants WHERE id = ?";
+    const query = "SELECT * FROM restaurants WHERE id = ? AND deleted_at IS NULL";
     conn.execute(query, [id], (error, results) => {
       if (error) {
         reject(error);
