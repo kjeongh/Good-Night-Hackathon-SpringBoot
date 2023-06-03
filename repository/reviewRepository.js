@@ -30,9 +30,25 @@ const getReview = (id) => {
       });
     });
 };
+
+const deleteReview = (id) => {
+    return new Promise((resolve, reject) => {
+  
+        const query = "DELETE FROM reviews WHERE id = ?";
+        conn.query(query, [id], (error, results) => {
+  
+        if (error) {
+          reject(error);
+        } else {
+          resolve(results);
+        }
+      });
+    });
+};
   
   module.exports = {
     createReview,
-    getReview
+    getReview,
+    deleteReview
   };
   

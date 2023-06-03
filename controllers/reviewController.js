@@ -34,7 +34,22 @@ const getReview = (req, res) => {
 };
 
 
+//리뷰 삭제
+const deleteReview = (req, res) => {
+    const id = req.params.id;
+
+    reviewRepository.deleteReview(id)
+  .then(results => { 
+    res.status(200).json({ message: '리뷰 삭제 성공'});
+  })
+  .catch(error => {
+    res.status(500).json({ error: '리뷰 삭제 실패' });
+  });
+};
+
+
 module.exports = {
     createReview,
-    getReview
+    getReview,
+    deleteReview
   };
