@@ -4,7 +4,7 @@ const createReview = (restaurantId, title, content) => {
 
     return new Promise((resolve, reject) => {
   
-        const query = "INSERT INTO reviews (restaurant_id, title, content) VALUES ((SELECT id FROM restaurants WHERE restaurant_id = ?), ?, ?)";
+        const query = "INSERT INTO reviews (restaurant_id, title, content) VALUES ((SELECT id FROM restaurants WHERE id = ?), ?, ?)";
         conn.query(query, [restaurantId, title, content], (error, results) => {
   
         if (error) {
@@ -19,7 +19,7 @@ const createReview = (restaurantId, title, content) => {
 const getReview = (id) => {
     return new Promise((resolve, reject) => {
   
-        const query = "SELECT * FROM reviews WHERE id = ?";
+        const query = "SELECT rt.name AS restaurant_name, rv.title, rv.content FROM reviews AS rv INNER JOIN restaurants AS rt ON rt.id = rv.restaurant_id";
         conn.query(query, [id], (error, results) => {
   
         if (error) {

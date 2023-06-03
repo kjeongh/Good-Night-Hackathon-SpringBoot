@@ -20,9 +20,11 @@ const getReview = (req, res) => {
     reviewRepository.getReview(id)
   .then(results => { 
     const review = results[0];
+    console.log(results)
     res.status(200).json(
         {
             message: '리뷰 조회 성공',
+            restaurant_name : review.restaurant_name,
             title: review.title,
             content: review.content
         }
