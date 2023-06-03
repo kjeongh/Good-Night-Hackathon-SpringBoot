@@ -48,8 +48,22 @@ const updateRestaurant = (req, res) => {
       });
 }
 
+//레스토랑 삭제
+const deleteRestaurant = (req, res) => {
+    const id = req.params.id;
+
+    restaurantRepository.deleteRestaurant(id)
+    .then(results => { //then으로 결과를 받아야지만 promise가 이행?
+        res.status(200).json({ message: '레스토랑 삭제 성공' });
+      })
+      .catch(error => {
+        res.status(500).json({ error: '레스토랑 삭제 실패' });
+      });
+}
+
 module.exports = {
   createRestaurant,
   getRestaurantById,
-  updateRestaurant
+  updateRestaurant,
+  deleteRestaurant
 };

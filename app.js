@@ -22,6 +22,7 @@ app.listen(app.get('port'), hostname, () => {
 app.post('/restaurants', restaurantRoutes);
 app.get('/restaurants/:id', restaurantRoutes);
 app.put('/restaurants/:id', restaurantRoutes);
+app.delete('/restaurants/:id', restaurantRoutes);
 
 //테이블 생성
 maria.connect((err) => {

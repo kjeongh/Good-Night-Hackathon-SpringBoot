@@ -20,6 +20,6 @@ const router = express.Router();
 router.post('/restaurants', restaurantController.createRestaurant);
 router.get('/restaurants/:id', restaurantController.getRestaurantById);
 router.put('/restaurants/:id', restaurantController.updateRestaurant);
-
+router.delete('/restaurants/:id', restaurantController.deleteRestaurant);
 
 module.exports = router;

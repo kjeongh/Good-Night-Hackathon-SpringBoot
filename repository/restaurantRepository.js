@@ -48,8 +48,24 @@ const updateRestaurant = (id, category) => {
   });
 };
 
+const deleteRestaurant = (id) => {
+
+  return new Promise((resolve, reject) => {
+    const query = "UPDATE restaurants SET deleted_at = NOW() WHERE id = ?";
+    conn.execute(query, [id], (error, results) => {
+      if (error) {
+        reject(error);
+      } else {
+        resolve(results);
+      }
+    });
+  });
+};
+
+
 module.exports = {
   createRestaurant,
   getRestaurantById,
-  updateRestaurant
+  updateRestaurant,
+  deleteRestaurant
 };
