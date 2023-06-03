@@ -20,6 +20,7 @@ router.post('/reviews', reviewController.createReview);
 router.get('/reviews/:id', reviewController.getReview);
 router.delete('/reviews/:id', reviewController.deleteReview);
 router.put('/reviews/:id', reviewController.updateReview);
-router.get('/reviews', reviewController.getReviewList);
+router.get('/reviews', reviewController.getReviewList, reviewController.searchReview);
+router.get('/reviews/search', reviewController.getReviewList, reviewController.searchReview);
 
 module.exports = router;

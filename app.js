@@ -31,6 +31,7 @@ app.get('/reviews/:id', reviewRoutes);
 app.delete('/reviews/:id', reviewRoutes);
 app.put('/reviews/:id', reviewRoutes);
 app.get('/reviews', reviewRoutes);
+app.get('/reviews/search', reviewRoutes);
 
 //테이블 생성
 maria.connect((err) => {
