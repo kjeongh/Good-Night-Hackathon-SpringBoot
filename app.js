@@ -27,6 +27,7 @@ app.put('/restaurants/:id', restaurantRoutes);
 app.delete('/restaurants/:id', restaurantRoutes);
 
 app.post('/reviews', reviewRoutes);
+app.get('/reviews/:id', reviewRoutes);
 
 //테이블 생성
 maria.connect((err) => {

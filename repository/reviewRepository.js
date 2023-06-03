@@ -15,8 +15,24 @@ const createReview = (restaurantId, title, content) => {
       });
     });
   };
+
+const getReview = (id) => {
+    return new Promise((resolve, reject) => {
+  
+        const query = "SELECT * FROM reviews WHERE id = ?";
+        conn.query(query, [id], (error, results) => {
+  
+        if (error) {
+          reject(error);
+        } else {
+          resolve(results);
+        }
+      });
+    });
+};
   
   module.exports = {
-    createReview
+    createReview,
+    getReview
   };
   
