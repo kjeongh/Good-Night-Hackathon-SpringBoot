@@ -19,6 +19,7 @@ const router = express.Router();
 // 레스토랑 라우터
 router.post('/restaurants', restaurantController.createRestaurant);
 router.get('/restaurants/:id', restaurantController.getRestaurantById);
+router.get('/restaurants', restaurantController.getRestaurantList);
 router.put('/restaurants/:id', restaurantController.updateRestaurant);
 router.delete('/restaurants/:id', restaurantController.deleteRestaurant);
 

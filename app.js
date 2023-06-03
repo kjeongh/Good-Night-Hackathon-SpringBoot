@@ -21,6 +21,7 @@ app.listen(app.get('port'), hostname, () => {
 
 app.post('/restaurants', restaurantRoutes);
 app.get('/restaurants/:id', restaurantRoutes);
+app.get('/restaurants', restaurantRoutes);
 app.put('/restaurants/:id', restaurantRoutes);
 app.delete('/restaurants/:id', restaurantRoutes);
 

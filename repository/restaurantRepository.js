@@ -33,6 +33,19 @@ const getRestaurantById = (id) => {
   });
 };
 
+const getRestaurantList = (category) => {
+  return new Promise((resolve, reject) => {
+    console.log(category);
+    const query = "SELECT * FROM restaurants WHERE category = ? AND deleted_at IS NULL";
+    conn.execute(query, [category], (error, results) => {
+      if (error) {
+        reject(error);
+      } else {
+        resolve(results);
+      }
+    });
+  });
+}
 
 const updateRestaurant = (id, category) => {
 
@@ -67,5 +80,6 @@ module.exports = {
   createRestaurant,
   getRestaurantById,
   updateRestaurant,
-  deleteRestaurant
+  deleteRestaurant,
+  getRestaurantList
 };
