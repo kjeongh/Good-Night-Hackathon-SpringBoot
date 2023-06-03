@@ -62,9 +62,42 @@ const updateReview = (req, res) => {
   });
 };
 
+
+//리뷰 목록 조회
+const getReviewList = (req, res) => {
+    const category = req.query.category;
+
+    reviewRepository.getReviewList()
+    .then(results => { 
+
+        //리뷰 목록 jsonArray생성
+        const reviewList = [];
+        results.forEach((review) => {
+            reviewList.push(
+                {
+                    //레스토랑 이름으로 변경
+                    restaurantId: review.restaurantId,
+                    name: review.title,
+                    category: review.content
+                })
+        })
+
+        res.status(200).json(
+            { 
+                message: '리뷰 목록 조회 성공',
+                list: reviewList
+            });      
+        })
+      .catch(error => {
+        res.status(500).json({ error: '리뷰 목록 조회 실패' });
+        console.log(error);
+      });
+}
+
 module.exports = {
     createReview,
     getReview,
     deleteReview,
-    updateReview
+    updateReview,
+    getReviewList
   };

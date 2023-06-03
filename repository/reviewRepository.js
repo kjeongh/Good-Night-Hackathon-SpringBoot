@@ -60,12 +60,29 @@ const updateReview = (id, title, content) => {
             }
           });
     })
-} 
+};
+
+//전체 리스트 반환 (페이지네이션)
+const getReviewList = () => {
+    return new Promise((resolve, reject) => {
+
+        const query = "SELECT restaurant_id, title, content FROM reviews";
+        conn.query(query, (error, results) => {
+  
+            if (error) {
+              reject(error);
+            } else {
+              resolve(results);
+            }
+          });
+    }) 
+};
   
   module.exports = {
     createReview,
     getReview,
     deleteReview,
-    updateReview
+    updateReview,
+    getReviewList
   };
   
