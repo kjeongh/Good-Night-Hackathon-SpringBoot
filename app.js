@@ -2,6 +2,7 @@ const express = require('express'); //express모듈 불러오기
 const app = express(); //express애플리케이션 객체 생성
 const maria = require('./maria');
 const restaurantRoutes = require('./routes/restaurantRoutes');
+const reviewRoutes = require('./routes/reviewRoutes');
 
 app.use(express.json()); // JSON 형식의 요청 body 파싱
 
@@ -24,6 +25,8 @@ app.get('/restaurants/:id', restaurantRoutes);
 app.get('/restaurants', restaurantRoutes);
 app.put('/restaurants/:id', restaurantRoutes);
 app.delete('/restaurants/:id', restaurantRoutes);
+
+app.post('/reviews', reviewRoutes);
 
 //테이블 생성
 maria.connect((err) => {

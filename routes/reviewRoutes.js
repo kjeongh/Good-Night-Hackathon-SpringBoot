@@ -10,3 +10,12 @@
 // - 리뷰 수정
 // - 리뷰 작성
 //     - 제목 및 내용
+
+const express = require('express');
+const reviewController = require('../controllers/reviewController');
+
+const router = express.Router();
+
+router.post('/reviews', reviewController.createReview);
+
+module.exports = router;

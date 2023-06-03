@@ -35,7 +35,7 @@ const getRestaurantById = (id) => {
 
 const getRestaurantList = (category) => {
   return new Promise((resolve, reject) => {
-    if(category == 'all') { //전체 조회
+    if(category == 'ALL') { //전체 조회
       const query = "SELECT * FROM restaurants WHERE deleted_at IS NULL";
       conn.execute(query, (error, results) => {
         if (error) {
